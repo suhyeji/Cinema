@@ -1,0 +1,54 @@
+html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body {
+    margin: 75px 0 0 0;
+    width: 100%;
+}
+#introduce {
+    height: 200px;
+    min-width: max-content;
+    padding-left: 50px;
+
+    line-height: 200px;
+    font-size: large;
+    color: rgb(43, 26, 5);
+}
+#name2 {
+    margin-left: 40px;
+    position: relative;
+    top: 14px;
+    height: 48px;
+}
+.titles {
+    font-size: 19px;
+    font-weight: bold;
+    color: rgb(51, 23, 23);
+}
+.services {
+    list-style-type: square;
+    line-height: 2em;
+}
+.services li {
+    font-size: 18px;
+}
+.images {
+    margin: 5px;
+}
+#chair {
+    height: 250px;
+}
+#coffee {
+    height: 260px;
+}
+.uls {
+    display: inline-block;
+    min-width: max-content;
+}
+#ul2 {
+    position: relative;
+    top: 9px;
+}

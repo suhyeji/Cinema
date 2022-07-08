@@ -1,0 +1,55 @@
+body {
+    padding: 10px 20px;
+    font-weight: bold;
+}
+table {
+    width: 500px; height: 200px;
+    border: darkgray solid 2px;
+}
+th {
+    text-align: center;
+    width: 500px; height: 20px;
+    line-height: 20px;
+    background-color: rgb(192, 192, 192);
+}
+td {
+    width: 100px; height: 70px;
+    line-height: 70px;
+    padding: 0 20px;
+}
+#bottomCell {
+    padding-bottom: 10px;
+}
+img {
+    width: 20px;
+    position: relative;
+    top: 3px;
+    padding-right: 7px;
+}
+#total {
+    position: absolute;
+    top: 255px;
+    left: 285px;
+}
+button {
+    display: inline-block;
+    border: none;
+    border-radius: 10px;
+    margin: 2px;
+    width: 50px; height: 40px;
+
+    color: white;
+    line-height: 40px;
+    text-align: center;   
+    font-weight: bold; 
+    cursor: pointer;            
+}
+#pay {
+    background-color: red;
+}
+#cancel {
+    background-color: rgb(150, 150, 150);
+}
+#price {
+    color: red;
+}

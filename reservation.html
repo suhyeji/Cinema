@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>영화 예매</title>
+        <style>
+            @import url(mainStyle.css);
+            @import url(reservationStyle.css);
+        </style>
+    </head>
+    <body>
+        <header>
+            <div>
+                <a href="main.html"><img id='name' src='media/name.jpg'></a>
+                <nav id="menubar">
+                    <ul>
+                        <li><a href="introduce.html">소개</a></li>
+                        <li><a href="reservation.html">예매</a></li>
+                        <li><a href="check.html">예매 확인</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <table id="mainTable">
+            <tr>
+                <td class="bar" id="movieBar">영화 선택</td><td class="bar" id="dateTimeBar">날짜/시간</td><td class="bar" id="seatBar">좌석 선택</td>
+            </tr>
+            <tr>
+            <td class="container">
+                <table class="innerTable" id="movieTable">
+                    <tr>
+                        <td id="movieListCell">
+                            <ul class="choice" id="movieList">
+                                <div class="movieLists" id="notebookr" onclick="selectMovie('notebook');"><li><img class="age" src="media/15.png">노트북</li></div>
+                                <div class="movieLists" id="ourTimes" onclick="selectMovie('ourTimes');"><li><img class="age" src="media/15.png">나의 소녀시대</li></div>
+                                <div class="movieLists" id="eternalSunshine" onclick="selectMovie('eternalSunshine');"><li><img class="age" src="media/15.png">이터널 선샤인</li></div>
+                                <div class="movieLists" id="aboutTime" onclick="selectMovie('aboutTime');"><li><img class="age" src="media/15.png">어바웃 타임</li></div>
+                                <div class="movieLists" id="nottingHill" onclick="selectMovie('nottingHill');"><li><img class="age" src="media/12.png">노팅힐</li></div>
+                            </ul>
+                        </td>
+                        <td id="moviePoster"></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="container">
+                <table class="innerTable" id="dateTimeTable">
+                    <tr>
+                        <td id="dateCell">
+                            <h2 id="month"><b>12월</b></h2>
+                            <ul class="choice" id="dateList">
+                                <div class="dateLists" id="date1201" onclick="selectDate('1201wed');"><li><b>1</b>&nbsp;&nbsp;수</li></div>
+                                <div class="dateLists" id="date1202" onclick="selectDate('1202thu');"><li><b>2</b>&nbsp;&nbsp;목</li></div>
+                                <div class="dateLists" id="date1203" onclick="selectDate('1203fri');"><li><b>3</b>&nbsp;&nbsp;금</li></div>
+                                <div class="dateLists" id="date1204" onclick="selectDate('1204sat');"><li style="color: rgb(4, 4, 161);"><b>4</b>&nbsp;&nbsp;토</li></div>
+                                <div class="dateLists" id="date1205" onclick="selectDate('1205sun');"><li style="color: rgb(168, 0, 0);"><b>5</b>&nbsp;&nbsp;일</li></div>
+                                <div class="dateLists" id="date1206" onclick="selectDate('1206mon');"><li><b>6</b>&nbsp;&nbsp;월</li></div>
+                                <div class="dateLists" id="date1207" onclick="selectDate('1207tue');"><li><b>7</b>&nbsp;&nbsp;화</li></div>
+                            </ul>
+                        </td>
+                        <td id="timeCell">
+                            <ul class="choice" id="timeList">
+                                <div class="timeLists" id="time10" onclick="selectTime('10');"><li>10:00</li></div>
+                                <div class="timeLists" id="time12" onclick="selectTime('12');"><li>12:00</li></div>
+                                <div class="timeLists" id="time14" onclick="selectTime('14');"><li>14:00</li></div>
+                                <div class="timeLists" id="time16" onclick="selectTime('16');"><li>16:00</li></div>
+                                <div class="timeLists" id="time18" onclick="selectTime('18');"><li>18:00</li></div>
+                                <div class="timeLists" id="time20" onclick="selectTime('20');"><li>20:00</li></div>
+                                <div class="timeLists" id="time22" onclick="selectTime('22');"><li>22:00</li></div>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <script>
+                var details = [,,,];
+
+                function selectMovie(movieTitle) {
+                    for (i = 0; i < 5; i++)
+                        document.getElementsByClassName("movieLists")[i].style.backgroundColor = "white";
+                    document.getElementById(movieTitle).style.backgroundColor = "rgb(230, 230, 230)";
+                    posterName = movieTitle + "Poster";
+                    document.getElementById("moviePoster").innerHTML = "<img src='media/" + posterName + ".jpg' width='400px'>";
+                    details[0] = movieTitle;
+                    window.sessionStorage.setItem("nowReserving", movieTitle);
+                    console.log(details);
+                    if (details[0] != null && details[1] != null && details[2] != null) {
+                        reset();
+                        document.getElementById("numberContainer").style.visibility = "visible";
+                    }
+                }
+
+                function selectDate(dateInfo) {
+                    for (i = 0; i < 7; i++)
+                        document.getElementsByClassName("dateLists")[i].style.backgroundColor = "white";
+                    dateID = "date" + dateInfo.substring(0, 4);
+                    document.getElementById(dateID).style.backgroundColor = "rgb(230, 230, 230)";
+                    details[1] = dateInfo;
+                    console.log(details);
+                    if (details[0] != null && details[1] != null && details[2] != null) {
+                        reset();
+                        document.getElementById("numberContainer").style.visibility = "visible";
+                    }
+                }
+                
+                function selectTime(time) {
+                    for (i = 0; i < 7; i++)
+                        document.getElementsByClassName("timeLists")[i].style.backgroundColor = "white";
+                    timeID = "time" + time;
+                    document.getElementById(timeID).style.backgroundColor = "rgb(230, 230, 230)";
+                    details[2] = time;
+                    console.log(details);
+                    if (details[0] != null && details[1] != null && details[2] != null) {
+                        reset();
+                        document.getElementById("numberContainer").style.visibility = "visible";
+                    }
+                }
+            </script>
+            <td class="container">
+                <div id="numberContainer">
+                    <form>
+                        인원 <input id="totalNumber" type="number" min="0" max="48" step="1">
+                    </form>
+                    <button onclick="set();">좌석 선택</button>
+                    <button onclick="reset();">재설정</button>
+                    <img id="help" src="media/help.png" title='인원 선택 후 "좌석 선택"을 누르세요. 인원을 다시 선택하려면 "재설정"을 누르고 인원을 선택하세요.'><br><br>
+                </div>
+                <div id="seatContainer">
+                    <script>
+                        var movieTitle = details[0];
+
+                        document.write("<div id='screen'> SCREEN </div><br>");
+                        document.write("<table id='seatTable'>");
+                        for (i = 1; i < 7; i++) {
+                            document.write("<tr>");
+                            for (j = 1; j < 9; j++) {
+                                document.write("<td><div class='seats' id='" + i + j + "' onclick='selectSeat(" + i + j +")'></div></td>");
+                            }
+                            document.write("</tr>");
+                        }
+                        document.write("</table><br>");
+
+                        var seatTable = document.getElementById("seatTable");
+                        var totalNumber, remain;
+                        var selectedSeatList = [];
+                        var seatNum;
+
+                        function set() {
+                            totalNumber = document.getElementById("totalNumber").value;
+                            window.sessionStorage.setItem("totalNumber", totalNumber);
+                            if (totalNumber < 1) {
+                                alert("인원을 선택해주세요.");
+                            }
+                            else {
+                                remain = totalNumber;
+                                document.getElementById("seatContainer").style.visibility = "visible";
+                            }
+                        }
+
+                        function reset() {
+                            document.getElementById('totalNumber').value = null;
+                            selectedSeatList = [];
+                            for (i = 0; i < 48; i++) {
+                                s = document.getElementsByClassName("seats")[i];
+                                if (s.style.backgroundColor == "brown")
+                                    s.style.backgroundColor = "silver";
+                            }
+                            document.getElementById("seatContainer").style.visibility = "hidden";
+                        }
+
+                        
+
+                        function selectSeat(k) {
+                            var seat = document.getElementById(k);
+                            returnSeatNum(k);
+                            if (seat.style.backgroundColor != "brown") {    // silver
+                                if (remain > 0) {
+                                    seat.style.backgroundColor = "brown";
+                                    selectedSeatList.push(seatNum);
+                                    remain--;
+                                }
+                                else {
+                                    alert("선택 가능 좌석 수를 초과하였습니다.");
+                                }
+                            }
+                            else {
+                                seat.style.backgroundColor = "silver";
+                                selectedSeatList.splice(selectedSeatList.indexOf(seatNum));
+                                remain++;
+                            }
+                            
+                        
+                        }
+
+                        function returnSeatNum(k) {
+                            array = ["A", "B", "C", "D", "E", "F"];
+                            seatNum = array[parseInt(String(k).substr(0, 1)) - 1];
+                            seatNum += String(k).substr(1, 1);
+                        }
+
+                        function reserve() {
+                            if (remain > 0) {
+                                alert("좌석을 모두 선택해주세요.");
+                            }
+                            else {
+                                details[3] = selectedSeatList;
+                                window.sessionStorage.setItem(details[0], JSON.stringify(details));
+                                location.href = "pay.html";
+                            }
+                        }
+                    </script>
+                    <button id="reservationButton" onclick="reserve()">예매하기</button>
+                </div>
+            </td>
+        </tr></table>
+    </body>
+</html>

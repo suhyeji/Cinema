@@ -1,0 +1,70 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    padding: 20px;
+}
+#mainTitle {
+    margin-top: 12px;
+    padding: 10px 20px;
+    font-size: 25px;
+}
+table {
+    width: 500px; height: 150px;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px lightgray;
+}
+td {
+    border: 1px;
+}
+.posterCell {
+    width: 115px;
+    line-height: 0;
+}
+.poster {
+    width: 115px;
+    border-radius: 15px;
+}
+.age {
+    width: 21px;
+    position: relative;
+    top: 3px;
+    padding-right: 7px;
+}
+.titleCell {
+    width: 385px; height: 45px;
+    padding-left: 25px;
+    font-weight: bold;
+    font-size: large;
+}
+.dateTimeCell {
+    width: 385px; height: 45px;
+    padding-left: 25px;
+}
+.blank {
+    height: 30px;
+}
+.seeDetails {
+    position: relative;
+    left: 428px;
+    bottom: 45px;
+
+    font-size: 15px;
+    color: rgb(119, 119, 119);
+    cursor: pointer;
+}
+.cancel {
+    display: inline-block;
+    width: 50px; height: 35px;
+    margin-top: 15px;
+    border-radius: 20px;
+    background-color: lightgray;
+    text-align: center;
+    line-height: 35px;
+    font-size: 15px;
+    font-weight: 550;
+    color: rgb(73, 73, 73);
+    cursor: pointer;
+}

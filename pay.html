@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>결제</title>
+        <style>
+            @import url(payStyle.css);
+        </style>
+        <script src='getInfos.js'></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var movieTitle = window.sessionStorage.getItem("nowReserving");
+            var koreanTitle = getKoreanTitle(movieTitle);
+            var details = JSON.parse(window.sessionStorage.getItem(movieTitle));
+            dateInfo = details[1];
+
+            month = dateInfo.substring(0, 2);
+            date = dateInfo.substring(2, 4);
+            day = getDay(dateInfo);
+            time = details[2];
+            seat = details[3];
+
+            document.write("<table>");
+            document.write("<tr><th colspan='2'><h3>예매 정보 확인</h3></th></tr>");
+            document.write("<tr><td>" + month + "/" + date +" (" + day + ") &nbsp;" + time + ":00 </td>");
+            document.write("<td><img src='media/15.png'>" + koreanTitle + "</td></tr>");
+            document.write("<tr><td id='bottomCell' colspan='2'>좌석 : " + seat + "</td></tr>");
+            document.write("</table>");
+        </script><br>
+
+        <div id="total">
+            총 합계 <span id="price"></span>원
+            <button id="pay" onclick="pay();">결제</button>
+            <button id="cancel" onclick="cancel();">취소</button>
+        </div>
+
+        <script>
+            totalNumber = JSON.parse(window.sessionStorage.getItem("totalNumber"));
+            console.log(totalNumber);
+            document.getElementById("price").innerText = totalNumber * 10000;
+
+            function pay() {
+                let input = confirm("결제하시겠습니까?");
+                if (input == true) {
+                    window.localStorage.setItem(movieTitle, JSON.stringify(details));
+                    window.sessionStorage.clear();
+                    location.replace("main.html");
+                }
+            }
+            function cancel() {
+                history.back();
+            }
+        </script>
+    </body>
+</html>

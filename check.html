@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>예매 확인</title>
+        <style>
+            @import url(mainStyle.css);
+            @import url(checkStyle.css);
+        </style>
+        <script src='getInfos.js'></script>
+    </head>
+    <body>
+        <header>
+            <div>
+                <a href="main.html"><img id='name' src='media/name.jpg'></a>
+                <nav id="menubar">
+                    <ul>
+                        <li><a href="introduce.html">소개</a></li>
+                        <li><a href="reservation.html">예매</a></li>
+                        <li><a href="check.html">예매 확인</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div id='mainTitle'>예매 내역</div>
+        <hr><br>
+        
+        <script>
+            if (window.localStorage.length == 0) {
+                document.write("&nbsp;&nbsp;&nbsp;&nbsp;예매 내역이 없습니다.");
+            }
+            else {
+                for (let i = 0; i < window.localStorage.length; i++) {
+                    movieTitle = window.localStorage.key(i);
+                    writeTable(movieTitle);
+                }
+            }
+
+            function writeTable(movieTitle) {
+                koreanTitle = getKoreanTitle(movieTitle);
+                getInfo(movieTitle);
+                age = getAge(movieTitle);
+                document.write("<table elllspacing=0 cellpadding=0>");
+                document.write("<tr><td class='posterCell' rowspan='4'><img class='poster' src='media/" + movieTitle + "Poster.jpg'></td><td class='blank'></td></tr>");
+                document.write("<tr><td class='titleCell'><img class='age' src='media/" + age + ".png'>" + koreanTitle + "</td></tr>");
+                document.write("<tr><td class='dateTimeCell'>" + month + "/" + date +" (" + day + ") &nbsp;" + startTime + "</td></tr>");
+                document.write("<tr><td class='blank'></td></tr>");
+                document.write("</table>");
+                switch(movieTitle) {
+                    case('notebook'):
+                        document.write("<div class='seeDetails' onclick='seeDetails(1);'>상세보기</div>");
+                        break;
+                    case('ourTimes'):
+                        document.write("<div class='seeDetails' onclick='seeDetails(2);'>상세보기</div>");
+                        break;
+                    case('eternalSunshine'):
+                        document.write("<div class='seeDetails' onclick='seeDetails(3);'>상세보기</div>");
+                        break;
+                    case('aboutTime'):
+                        document.write("<div class='seeDetails' onclick='seeDetails(4);'>상세보기</div>");
+                        break;
+                    case('nottingHill'):
+                        document.write("<div class='seeDetails' onclick='seeDetails(5);'>상세보기</div>");
+                }
+            }
+
+            function getInfo(movieTitle) {
+            details = JSON.parse(window.localStorage.getItem(movieTitle));
+            dateInfo = details[1];
+
+            month = dateInfo.substring(0, 2);
+            date = dateInfo.substring(2, 4);
+            day = getDay(dateInfo);
+            time = details[2];
+            getTime(movieTitle, time);
+            seat = details[3];
+            }
+
+            function seeDetails(i) {
+                location.href = "seeDetails.html";
+                switch(i) {
+                    case 1:
+                        window.sessionStorage.setItem("toSee", "notebook");
+                        break;
+                    case 2:
+                        window.sessionStorage.setItem("toSee", "ourTimes");
+                        break;
+                    case 3:
+                        window.sessionStorage.setItem("toSee", "eternalSunshine");
+                        break;
+                    case 4:
+                        window.sessionStorage.setItem("toSee", "aboutTime");
+                        break;
+                    case 5:
+                        window.sessionStorage.setItem("toSee", "nottingHill");
+                }
+            }
+        </script>
+    </body>
+</html>

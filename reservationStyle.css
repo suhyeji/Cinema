@@ -1,0 +1,167 @@
+body {
+    padding: 30px;
+}
+#mainTable {
+    border-collapse: collapse;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+#mainTable td {
+    border: rgb(83, 83, 83) solid 1px;
+}
+.container {
+    margin: 30px 0;
+    padding: 30px 10px;
+    height: 550px;
+}
+.bar {
+    height: 50px;
+    margin-bottom: 40px;
+    background-color: black;
+    text-align: center;
+    line-height: 50px;
+    font-size: large;
+    color: white;
+    font-weight: 500;
+}
+.innerTable {
+    border: none;
+    margin: 0; padding: 0;
+}
+.choice {
+    list-style: none;
+    font-size: 17px;
+}
+.choice li a {
+    text-decoration: none;
+    color: black;
+    line-height: 150%;
+}
+.choice li {
+    display: block;
+    cursor: pointer;
+    margin: 0; 
+    padding: 10px 5px;
+}
+.choice li:hover {
+    background-color: rgb(247, 247, 247);
+}
+/* ----------------------------------------------- MOVIE ---------------------------------------------------- */
+#movieTable {
+    width: 630px; height: 550px;
+}
+#movieTable td {
+    border: none;
+    margin: 0; padding: 0;
+    vertical-align: top;
+}
+#movieBar {
+    width: 630px;
+}
+#movieListCell {
+    width: 200px;
+}
+#movieList {
+    margin: 0;
+    padding: 0 10px;
+}
+#movieList li {
+    width: 200px;
+}
+.age {
+    width: 17px;
+    margin-right: 8px;
+}
+#moviePoster {
+    width: 400px; height: 520px;
+    padding-right: 30px;
+}
+/* ----------------------------------------------- DATE/TIME ---------------------------------------------------- */
+#dateTimeBar {
+    width: 200px;
+}
+#dateTimeTable {
+    width: inherit; height: inherit;
+    text-align: center;
+}
+#dateTimeTable td {
+    border: none;
+    margin: 0; padding: 0;
+    vertical-align: top;
+}
+#dateCell {
+    width: 80px;
+}
+#dateList {
+    padding-left: 10px;
+}
+#dateList li {
+    width: 80px;
+}
+#timeCell {
+    width: 120px;
+}
+#timeList {
+    padding: 53px 10px 0 10px;
+}
+#timeList li {
+    width: 80px;
+}
+/* ----------------------------------------------- SEAT ---------------------------------------------------- */
+#seatBar {
+    width: 430px;
+}
+#numberContainer {
+    visibility: hidden;
+}
+#seatContainer {
+    visibility: hidden;
+}
+#screen {
+    width: 430px; height: 50px;
+    background-color: rgb(201, 208, 212);
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    color:rgb(69, 74, 78);
+}
+#seatTable tr { height: 55px; }
+#seatTable td { border: none; }
+.seats {
+    width: 50px; height: 50px;
+    background-color: silver;
+    border-radius: 20px 20px 5px 5px;
+}
+.seats:hover {
+    background-color: gray !important;
+}
+form {
+    display: inline-block;
+    padding-left: 32px;
+    padding-right: 50px;
+    margin: 20px 0;
+}
+button {
+    display: inline-block;
+    width: 80px; height: 40px;
+    background-color: rgb(173, 153, 128);
+    border: none;
+    border-radius: 10px;
+
+    color: white;
+    line-height: 40px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+#reservationButton {
+    float: right;
+}
+#help {
+    width: 25px;
+    margin-left: 15px;
+    position: relative;
+    top: 8px;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>상세 내역</title>
+        <style>
+            @import url(seeDetailsStyle.css);
+        </style>
+        <script src='getInfos.js'></script>
+    </head>
+    <body>
+        <img id='delete' src='media/delete.png' onclick="window.sessionStorage.clear(); history.back();">
+        <div id='mainTitle'>상세 내역</div>
+        <script>
+            var movieTitle = window.sessionStorage.getItem("toSee");
+            var koreanTitle = getKoreanTitle(movieTitle);
+            var details = JSON.parse(window.localStorage.getItem(movieTitle));
+            dateInfo = details[1];
+
+            month = dateInfo.substring(0, 2);
+            date = dateInfo.substring(2, 4);
+            day = getDay(dateInfo);
+            time = details[2];
+            seat = details[3];
+            getTime(movieTitle, time);
+            num = seat.length;
+            age = getAge(movieTitle);
+
+            document.write("<table>");
+            document.write("<tr><td id='titleCell'><img id='age' src='media/" + age + ".png'>" + koreanTitle + "</td></tr>");
+            document.write("<tr><td id='dateTimeCell'>" + month + "/" + date +" (" + day + ") &nbsp;" + startTime + " - " + endTime + "</td></tr>");
+            document.write("<tr><td id='numCell'>" + num + "명</td></tr>");
+            document.write("<tr><td id='seatCell'>" + seat + "</td></tr>");
+                switch(movieTitle) {
+                    case('notebook'):
+                        document.write("<tr><td id='cancelCell'><div id='cancel' onclick='cancel(1)'>예매 취소하기</td></tr>");
+                        break;
+                    case('ourTimes'):
+                        document.write("<tr><td id='cancelCell'><div id='cancel' onclick='cancel(2)'>예매 취소하기</td></tr>");
+                        break;
+                    case('eternalSunshine'):
+                        document.write("<tr><td id='cancelCell'><div id='cancel' onclick='cancel(3)'>예매 취소하기</td></tr>");
+                        break;
+                    case('aboutTime'):
+                        document.write("<tr><td id='cancelCell'><div id='cancel' onclick='cancel(4)'>예매 취소하기</td></tr>");
+                        break;
+                    case('nottingHill'):
+                        document.write("<tr><td id='cancelCell'><div id='cancel' onclick='cancel(5)'>예매 취소하기</td></tr>");
+                }
+            document.write("</table>");
+
+            function cancel(i) {
+                let input = confirm("정말 취소하시겠습니까?");
+                if (input == true) {
+                    switch(i) {
+                    case 1:
+                        toCancel = 'notebook';
+                        break;
+                    case 2:
+                        toCancel = 'ourTimes';
+                        break;
+                    case 3:
+                        toCancel = 'eternalSunshine';
+                        break;
+                    case 4:
+                        toCancel = 'aboutTime';
+                        break;
+                    case 5:
+                        toCancel = 'nottingHill';
+                    }
+                    window.localStorage.removeItem(toCancel);
+                    history.back();
+                }
+            }
+        </script>
+    </body>
+</html>
