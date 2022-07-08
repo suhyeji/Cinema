@@ -1,2 +1,2 @@
 # Cinema
-Run main.html
+Run `main.html`
